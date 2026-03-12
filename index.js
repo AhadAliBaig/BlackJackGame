@@ -1,5 +1,5 @@
 let player = {
-    name: "Per",
+    name: "User",
     chips: 200
 }
 
@@ -47,9 +47,11 @@ function renderGame() {
     } else if (sum === 21) {
         message = "You've got Blackjack!"
         hasBlackJack = true
+        player.chips += 50
     } else {
         message = "You're out of the game!"
         isAlive = false
+        player.chips -= 50
     }
     messageEl.textContent = message
 }
