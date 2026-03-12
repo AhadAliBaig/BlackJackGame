@@ -27,7 +27,9 @@ function getRandomCard() {
 }
 
 function startGame() {
+    if (isAlive) return
     isAlive = true
+    hasBlackJack = false
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
     cards = [firstCard, secondCard]
@@ -65,3 +67,7 @@ function newCard() {
         renderGame()        
     }
 }
+
+// So HTML onclick="startGame()" / "newCard()" work when script is bundled as a module (e.g. on Netlify)
+window.startGame = startGame
+window.newCard = newCard
